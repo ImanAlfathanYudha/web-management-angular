@@ -8,7 +8,7 @@ import { FormDetailComponent } from './components/form-detail/form-detail.compon
 const routes: Routes = [
   { path: '', component: DashboardComponent }, // halaman utama kamu
   { path: 'pending', component: PendingTransactionComponent },
-  { path: 'edit', component: FormDetailComponent }
+  { path: 'edit/:id', component: FormDetailComponent }
   
 ];
 

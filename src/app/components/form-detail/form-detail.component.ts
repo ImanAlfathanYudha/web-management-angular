@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CsvUploadService } from 'src/app/services/csv-upload.service';
 
 @Component({
   selector: 'app-form-detail',
@@ -10,23 +11,16 @@ import { Router } from '@angular/router';
 export class FormDetailComponent implements OnInit {
   transactionForm!: FormGroup;
 
-  mockTransaction = {
-    timestamp: 17123123123,
-    name: 'John Doe',
-    type: 'CREDIT',
-    amount: 50000,
-    status: 'SUCCESS',
-    description: 'Monthly salary',
-  };
-
   constructor(
     private fb: FormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+    private csvService: CsvUploadService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.loadTransaction();
+    this.loadDetailTransaction();
   }
 
   initializeForm(): void {
@@ -40,8 +34,18 @@ export class FormDetailComponent implements OnInit {
     });
   }
 
-  loadTransaction(): void {
-    this.transactionForm.patchValue(this.mockTransaction);
+  loadDetailTransaction(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.csvService.getDetailTransactions(id).subscribe({
+      next: (data) => {
+        this.transactionForm.patchValue(data);
+      },
+      error: (err) => {
+        alert('Failed to load transaction detail: ' + err?.error?.Message || 'Unknown error');
+        console.error('Failed to load transaction detail:', err);
+      }
+    });
   }
 
   onSubmit(): void {
