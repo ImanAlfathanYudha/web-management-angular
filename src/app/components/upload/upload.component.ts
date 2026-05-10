@@ -26,7 +26,7 @@ export class UploadComponent {
     }
 
     this.csvService.uploadTransactionCSV(file).subscribe({
-      next: (res) => {
+      next: () => {
         alert('✅ File uploaded successfully!');
       },
       error: (err) => {

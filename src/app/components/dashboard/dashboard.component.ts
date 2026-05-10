@@ -19,6 +19,8 @@ export class DashboardComponent {
   error: string | null = null;
   activeTab: 'transactions' | 'issues' = 'transactions';
   ngOnInit() {
+    this.csvService.getAllTransactions().subscribe();
+
     this.csvService.transactions$.subscribe(data => {
       this.transactions = data || [];
     });
