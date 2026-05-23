@@ -118,14 +118,17 @@
 
           </td>
           <td>
-            {{ employee.basicSalary | currency:'IDR' }}
+            {{ employee.basicSalary | currency:'Rp' }}
           </td>
 
           <td class="actions">
-            <button class="edit-btn">
+            <button class="detail-btn" (click)="gotoDetail(employee.id)">
+              Detail
+            </button>
+            <button class="edit-btn" (click)="gotoEdit(employee.id)">
               Edit
             </button>
-            <button class="delete-btn">
+            <button class="delete-btn" (click)="gotoDelete(employee.id)">
               Delete
             </button>
           </td>

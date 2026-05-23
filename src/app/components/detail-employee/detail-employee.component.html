@@ -11,7 +11,7 @@
       <p>Name: {{ emp.firstName }} {{ emp.lastName }}</p>
       <p>Email: {{ emp.email }}</p>
       <p>Birthday: {{ emp.birthDate }}</p>
-      <p>Salary: {{ emp.basicSalary }}</p>
+      <p>Salary: {{ emp.basicSalary | currency:'Rp' }}</p>
       <p>Status: {{ emp.status }}</p>
       <p>Description: {{ emp.description }}</p>
     </div>

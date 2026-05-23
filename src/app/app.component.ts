@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from 'src/app/services/authorization.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'csv-viewer-app';
   activeTab: 'transactions' | 'issues' = 'transactions';
-
-  constructor(private authService: AuthorizationService, private router: Router) {}
+  showNavbar = true;
+  constructor(private authService: AuthorizationService, private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.showNavbar = this.router.url !== '/login';
+      });
+  }
 
   logout(): void {
     console.log('Logging out user');

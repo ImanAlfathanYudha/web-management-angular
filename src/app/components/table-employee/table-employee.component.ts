@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { Employee } from 'src/app/model/employee.model';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -27,7 +28,8 @@ export class EmployeeListComponent implements OnInit {
   totalCount = 0;
 
   constructor(
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -74,6 +76,18 @@ export class EmployeeListComponent implements OnInit {
 
   onPageSizeChange(size: number): void {
     this.employeeService.setPageSize(size);
+  }
+
+  gotoDetail(id: string): void {
+    this.router.navigate([`/detail-employee/${id}`]);
+  }
+
+  gotoEdit(id: string): void {
+    alert('Edit employee with ID: ' + id);
+  }
+
+  gotoDelete(id: string): void {
+    alert('Delete employee with ID: ' + id);
   }
 
   // onSort(field: string): void {

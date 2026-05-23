@@ -10,8 +10,8 @@ import { FormAddEmployee } from './components/form-add-employee/form-add-employe
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard-employee', component: EmployeeListComponent, canActivate: [authGuard] },
-  { path: 'dashboard-employee/add', component: FormAddEmployee, canActivate: [authGuard] },
-  { path: 'dashboard-employee/:id', component: DetailEmployeeComponent, canActivate: [authGuard] },
+  { path: 'add-employee', component: FormAddEmployee, canActivate: [authGuard] },
+  { path: 'detail-employee/:id', component: DetailEmployeeComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '/dashboard-employee' }
 ];
 

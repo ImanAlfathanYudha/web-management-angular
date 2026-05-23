@@ -1,8 +1,8 @@
-<nav class="navbar">
+<nav class="navbar" *ngIf="showNavbar">
   <a routerLink="/dashboard-employee" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
     Dashboard
   </a>
-  <a routerLink="/dashboard-employee/add" routerLinkActive="active">
+  <a routerLink="add-employee" routerLinkActive="active">
     Add Employee
   </a>
   <a href="javascript:void(0)" (click)="logout()">Logout</a>

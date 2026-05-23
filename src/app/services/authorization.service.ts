@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
   private apiUrl = `${environment.apiUrl}/users`;
-
+  router = inject(Router);
   private currentUserSubject =
     new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
@@ -50,5 +51,6 @@ export class AuthorizationService {
   logout(): void {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 }
