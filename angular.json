@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "csv-viewer-app:build:production"
+              "buildTarget": "csv-viewer-app:build:production"
             },
             "development": {
-              "browserTarget": "csv-viewer-app:build:development"
+              "buildTarget": "csv-viewer-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "csv-viewer-app:build"
+            "buildTarget": "csv-viewer-app:build"
           }
         },
         "test": {

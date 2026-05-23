@@ -1,31 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UploadComponent } from './components/upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TableTransactionComponent } from './components/table-transaction/table-transaction.component';
-import { TransactionSummaryComponent } from './components/transaction-summary/transaction-summary.component';
-import { TableIssueComponent } from './components/table-issue/table-issue.component';
-import { PendingTransactionComponent } from './components/pending-transaction/pending-transaction.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FormDetailComponent } from './components/form-detail/form-detail.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { EmployeeListComponent } from './components/table-employee/table-employee.component';
+import { CommonModule} from '@angular/common';
+import { DetailEmployeeComponent } from './components/detail-employee/detail-employee.component';
+import { FormAddEmployee } from './components/form-add-employee/form-add-employee.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UploadComponent,
-    TableTransactionComponent,
-    TransactionSummaryComponent,
-    TableIssueComponent,
-    PendingTransactionComponent,
-    DashboardComponent,
-    FormDetailComponent
+    LoginComponent,
+    EmployeeListComponent,
+    DetailEmployeeComponent,
+    FormAddEmployee,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule, HttpClientModule, ReactiveFormsModule 
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule, CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
