@@ -1,78 +1,121 @@
-Employee Management App
-A simple employee management application built with Angular 21 and JSON Server as a mock backend.
+# Employee Management App
+
+A simple employee management application built with **Angular 21** and **JSON Server** as a mock backend.
+
 ---
-Tech Stack
-Framework: Angular 21
-Backend: JSON Server (mock REST API)
-Data Seeding: Faker.js
-Language: TypeScript 5.9
+
+## Tech Stack
+
+- **Framework:** Angular 21
+- **Backend:** JSON Server (mock REST API)
+- **Data Seeding:** Faker.js
+- **Language:** TypeScript 5.9
+
 ---
-Prerequisites
+
+## Prerequisites
+
 Make sure you have the following installed on your machine:
-Node.js (v18 or above recommended)
-npm (comes with Node.js)
+
+- [Node.js](https://nodejs.org/) (v18 or above recommended)
+- npm (comes with Node.js)
+
 ---
-Getting Started
-1. Clone the Repository
+
+## Getting Started
+
+### 1. Clone the Repository
+
 ```bash
 git clone <your-repo-url>
 cd employee-management-app
 ```
-2. Install Dependencies
+
+### 2. Install Dependencies
+
 Install all required packages including `json-server` and `@faker-js/faker`:
+
 ```bash
 npm install
 ```
-3. Seed the Database
+
+### 3. Seed the Database
+
 Generate fresh employee data into `db.json`:
+
 ```bash
 npm run seed
 ```
+
 > Run this command whenever you want to reset and renew the data.
-4. Run the Application
+
+### 4. Run the Application
+
 Start both the Angular app and the JSON Server backend simultaneously:
+
 ```bash
 npm run start
 ```
+
 This command runs:
-Angular dev server on `http://localhost:4200`
-JSON Server (mock backend) on `http://localhost:3000`
+- **Angular dev server** on `http://localhost:4200`
+- **JSON Server** (mock backend) on `http://localhost:3000`
+
 ---
-Accessing the App
+
+## Accessing the App
+
 Open your browser and go to:
+
 ```
 http://localhost:4200
 ```
+
 You will be automatically redirected to the login page.
-Login Credentials
-Field	Value
-Username	`admin`
-Password	`password`
+
+### Login Credentials
+
+| Field    | Value      |
+|----------|------------|
+| Username | `admin`    |
+| Password | `password` |
+
 ---
-Pages & Features
-Dashboard — `/`
-After login, you will be redirected to the Employee Dashboard.
-View a list of all employees
-Search employees by name or other fields
-Filter employee data
-Add Employee — `/add-employee`
-Navigate to this page via the navbar or access it directly:
+
+## Pages & Features
+
+### Dashboard — `/`
+After login, you will be redirected to the **Employee Dashboard**.
+- View a list of all employees
+- Search employees by name or other fields
+- Filter employee data
+
+### Add Employee — `/add-employee`
+Navigate to this page via the **navbar** or access it directly:
 ```
 http://localhost:4200/add-employee
 ```
-Fill in the form to add a new employee
-Employee Detail
-Click the Detail button on the Action column in the dashboard table
-View complete information of a specific employee
+- Fill in the form to add a new employee
+
+### Employee Detail
+- Click the **Detail** button on the Action column in the dashboard table
+- View complete information of a specific employee
+
 ---
-Available Scripts
-Command	Description
-`npm run start`	Run Angular app + JSON Server concurrently
-`npm run seed`	Regenerate/reset data in `db.json`
-`npm run build`	Build the Angular app for production
-`npm test`	Run unit tests
+
+## Available Scripts
+
+| Command         | Description                                      |
+|-----------------|--------------------------------------------------|
+| `npm run start` | Run Angular app + JSON Server concurrently       |
+| `npm run seed`  | Regenerate/reset data in `db.json`               |
+| `npm run build` | Build the Angular app for production             |
+| `npm test`      | Run unit tests                                   |
+
 ---
-Project Structure
+
+## Project Structure
+
 ```
 employee-management-app/
 ├── src/
@@ -86,8 +129,11 @@ employee-management-app/
 ├── package.json
 └── README.md
 ```
+
 ---
-Notes
-`db.json` is the mock database used by JSON Server. Always run `npm run seed` first if the file is empty or missing.
-The app uses `concurrently` to run both servers in one terminal with `npm run start`.
-Do not run `npm run backend` and `ng serve` separately unless you need to debug them independently.
+
+## Notes
+
+- `db.json` is the mock database used by JSON Server. Always run `npm run seed` first if the file is empty or missing.
+- The app uses `concurrently` to run both servers in one terminal with `npm run start`.
+- Do **not** run `npm run backend` and `ng serve` separately unless you need to debug them independently.
