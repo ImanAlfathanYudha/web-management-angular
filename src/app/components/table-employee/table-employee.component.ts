@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, Subject, combineLatest, takeUntil } from 'rxjs';
 import { Employee } from 'src/app/model/employee.model';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -14,6 +14,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class EmployeeListComponent implements OnInit {
 
   employees$!: Observable<Employee[]>;
+  private destroy$ = new Subject<void>();
 
   loading$ = this.employeeService.loading$;
   error$ = this.employeeService.error$;
@@ -40,17 +41,23 @@ export class EmployeeListComponent implements OnInit {
       this.employeeService.pageSize$,
       this.employeeService.totalPages$,
       this.employeeService.totalCount$
-    ]).subscribe(([
-      currentPage,
-      pageSize,
-      totalPages,
-      totalCount
-    ]) => {
-      this.currentPage = currentPage;
-      this.pageSize = pageSize;
-      this.totalPages = totalPages;
-      this.totalCount = totalCount;
-    });
+    ]).pipe(takeUntil(this.destroy$))
+      .subscribe(([
+        currentPage,
+        pageSize,
+        totalPages,
+        totalCount
+      ]) => {
+        this.currentPage = currentPage;
+        this.pageSize = pageSize;
+        this.totalPages = totalPages;
+        this.totalCount = totalCount;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onSearch(): void {
@@ -89,8 +96,4 @@ export class EmployeeListComponent implements OnInit {
   gotoDelete(id: string): void {
     alert('Delete employee with ID: ' + id);
   }
-
-  // onSort(field: string): void {
-  //   this.employeeService.setSorting(field);
-  // }
 }

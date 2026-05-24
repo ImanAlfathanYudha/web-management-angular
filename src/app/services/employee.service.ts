@@ -138,6 +138,7 @@ export class EmployeeService {
   }
 
   setGroup(group: string): void {
+    console.log('tes group filter to:', group);
     this.groupSubject.next(group);
     this.currentPageSubject.next(1);
   }
