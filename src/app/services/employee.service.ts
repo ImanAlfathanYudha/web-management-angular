@@ -103,7 +103,6 @@ export class EmployeeService {
   getDetailEmployee(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`).pipe(
       tap((res: any) => {
-        console.log('RAW employee response:', res);
         const employeeData = res?.data || res || null;
         this.detailEmployeeSubject.next(employeeData);
       })
@@ -138,7 +137,6 @@ export class EmployeeService {
   }
 
   setGroup(group: string): void {
-    console.log('tes group filter to:', group);
     this.groupSubject.next(group);
     this.currentPageSubject.next(1);
   }

@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
-import { EmployeeListComponent } from './components/table-employee/table-employee.component';
-import { DetailEmployeeComponent } from './components/detail-employee/detail-employee.component';
-import { FormAddEmployee } from './components/form-add-employee/form-add-employee.component';
+import { EmployeeListComponent } from './components/employee-list/table-employee.component';
+import { DetailEmployeeComponent } from './components/employee-detail/detail-employee.component';
+import { FormAddEmployee } from './components/employee-add/form-add-employee.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
