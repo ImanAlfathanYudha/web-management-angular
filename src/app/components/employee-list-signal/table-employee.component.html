@@ -1,0 +1,110 @@
+<div class="employee-list-container">
+  <filter-employee-toolbar [searchQuery]="searchQuery" [selectedGroup]="selectedGroup" [selectedStatus]="selectedStatus"
+    (searchQueryChange)="onSearch($event)" (groupChange)="onGroupChange($event)"
+    (statusChange)="onStatusChange($event)">
+  </filter-employee-toolbar>
+
+  <div class="status-message" *ngIf="loading$ | async">
+    Loading employees...
+  </div>
+
+  <div class="status-message error" *ngIf="error$ | async as error">
+    {{ error }}
+  </div>
+
+  <div class="page-size">
+
+    <label>
+      Rows per page:
+    </label>
+
+    <select [value]="pageSize" (change)="onPageSizeChange(+$any($event.target).value)">
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="20">20</option>
+    </select>
+
+  </div>
+
+  <div class="table-wrapper">
+    <p>This feature is using signal</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th class="sortable">
+            Group
+          </th>
+          <th>Status</th>
+          <th class="sortable">
+            Salary
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let employee of employees$()">
+          <td>
+            {{ employee.id }}
+          </td>
+          <td>
+            {{ employee.firstName }}
+            {{ employee.lastName }}
+          </td>
+          <td>
+            {{ employee.email }}
+          </td>
+          <td>
+            {{ employee.group }}
+          </td>
+          <td>
+            <span class="status-badge" [ngClass]="{
+                active:
+                  employee.status === 'Active',
+                leave:
+                  employee.status === 'On Leave',
+                terminated:
+                  employee.status === 'Terminated'
+              }">
+              {{ employee.status }}
+            </span>
+
+          </td>
+          <td>
+            {{ employee.basicSalary | currency:'Rp' }}
+          </td>
+
+          <td class="actions">
+            <button class="detail-btn" (click)="gotoDetail(employee.id)">
+              Detail
+            </button>
+            <button class="edit-btn" (click)="gotoEdit(employee.id)">
+              Edit
+            </button>
+            <button class="delete-btn" (click)="gotoDelete(employee.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <button (click)="onPageChange(currentPage() - 1)" [disabled]="currentPage() === 1">
+      ◀ Prev
+    </button>
+    <span>
+      Page
+      {{ currentPage() }}
+      of
+      {{ totalPages() }}
+    </span>
+
+    <button (click)="onPageChange(currentPage() + 1)" [disabled]="currentPage() >= totalPages()">
+      Next ▶
+    </button>
+  </div>
+</div>

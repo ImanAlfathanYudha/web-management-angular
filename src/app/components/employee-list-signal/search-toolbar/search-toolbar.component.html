@@ -1,0 +1,47 @@
+<div class="toolbar">
+
+  <input
+    type="text"
+    placeholder="Search employee..."
+    [(ngModel)]="searchQuery"
+    (keyup.enter)="onSearch()"
+    class="search-box"
+  />
+
+  <select
+    [(ngModel)]="selectedGroup"
+    (change)="onGroupChanged()">
+
+    <option value="">
+      All Groups
+    </option>
+
+    <option
+      *ngFor="let department of departments"
+      [value]="department">
+
+      {{ department }}
+
+    </option>
+
+  </select>
+
+  <select
+    [(ngModel)]="selectedStatus"
+    (change)="onStatusChanged()">
+
+    <option value="">
+      All Statuses
+    </option>
+
+    <option
+      *ngFor="let status of statuses"
+      [value]="status">
+
+      {{ status }}
+
+    </option>
+
+  </select>
+
+</div>
