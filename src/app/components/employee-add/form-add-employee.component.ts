@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService2 } from 'src/app/services/employee2.service';
 import { faker } from '@faker-js/faker';
 import { Employee } from 'src/app/model/employee.model';
 import { APP_CONFIG } from 'src/app/config/app.config';
@@ -20,7 +20,7 @@ export class FormAddEmployee {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private employeeService: EmployeeService,
+    private employeeService: EmployeeService2,
   ) { }
 
   ngOnInit(): void {
