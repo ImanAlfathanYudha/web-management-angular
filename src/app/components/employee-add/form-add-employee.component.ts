@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { faker } from '@faker-js/faker';
 import { Employee } from 'src/app/model/employee.model';
+import { APP_CONFIG } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-form-add-employee',
@@ -13,7 +14,7 @@ import { Employee } from 'src/app/model/employee.model';
 })
 export class FormAddEmployee {
   employeeForm!: FormGroup;
-  departments = ['Engineering', 'HR', 'Marketing', 'Sales', 'Finance', 'Product'];
+  departments = APP_CONFIG.departments;
   searchGroup = '';
   maxDate = new Date().toISOString().split('T')[0];
   constructor(
