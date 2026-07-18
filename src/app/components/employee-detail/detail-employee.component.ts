@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService2 } from 'src/app/services/employee2.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class DetailEmployeeComponent implements OnInit {
   loading = true;
 
   constructor(
-    private employeeService: EmployeeService,
+    private employeeService: EmployeeService2,
     private route: ActivatedRoute,
     private router: Router
   ) { }
