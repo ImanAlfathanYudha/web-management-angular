@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
-import { EmployeeListComponent } from './components/employee-list/table-employee.component';
+import { EmployeeListComponent } from './components/employee-list-signal/table-employee.component';
 import { DetailEmployeeComponent } from './components/employee-detail/detail-employee.component';
 import { FormAddEmployee } from './components/employee-add/form-add-employee.component';
 
